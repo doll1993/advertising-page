@@ -2140,6 +2140,48 @@
 			0, 0.25, 1); } .guide-trans-leave-active { transition-duration: 0.16s;
 			} .consult-hide { display: none; }
 		</style>
+		<style>
+        /* 模态窗口样式 */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+        }
+        
+        .modal-content img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        
+        .close-modal {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+		</style>
 	</head>
 	<body class="loki-body-common-style" style="padding-bottom: 7.3rem;">
 		<div>
@@ -3184,11 +3226,22 @@
 				</div>
 			</div>
 		</div>
+		<!-- 模态窗口 -->
+		<div id="qrModal" class="modal-overlay">
+			<div class="modal-content">
+				<h3>扫描二维码下载应用</h3>
+				<img src="./qrcode_magicore_app.png" alt="应用下载二维码">
+				<button class="close-modal">关闭</button>
+			</div>
+		</div>
 		<script>
 			document.addEventListener('DOMContentLoaded', function() {
 				//选择所有具有指定类的按钮
 				const downloadButtons = document.querySelectorAll('.gt-jmy-h5-new-download-btn');
 				const downloadButton2 = document.querySelector('.base-btn');
+				//获取模态窗口元素
+				const qrModal = document.getElementById('qrModal');
+				const closeModalBtn = document.querySelector('.close-modal');
 				//下载功能函数
 				function downloadApp() {
 					const deviceType = getDeviceType();
@@ -3202,8 +3255,8 @@
 						downloadLink.click();
 						document.body.removeChild(downloadLink);
 					} else {
-						//其他设备打开二维码图片
-						window.open('./qrcode_magicore_app.png', '_blank');
+						//其他设备显示二维码模态窗口
+						qrModal.style.display = 'flex';
 					}
 				}
 				//设备类型检测函数
@@ -3229,6 +3282,16 @@
 				if (downloadButton2) {
 					downloadButton2.addEventListener('click', downloadApp);
 				}
+				//关闭模态窗口事件
+				closeModalBtn.addEventListener('click', function() {
+					qrModal.style.display = 'none';
+				});
+				//点击模态窗口外部也可以关闭
+				qrModal.addEventListener('click', function(e) {
+					if (e.target === qrModal) {
+						qrModal.style.display = 'none';
+					}
+				});
 			});
 		</script>
 	</body>
