@@ -3,173 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>开源宣传</title>
+	<link rel="icon" type="image/png" href="/favicon.png">
+    <title>魔术盒 - 专业网络加速器</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
         }
         
         body {
             background: linear-gradient(135deg, #1e5799 0%, #207cca 51%, #2989d8 100%);
             color: white;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             padding: 20px;
-            text-align: center;
         }
         
         .container {
-            max-width: 800px;
-            width: 100%;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            font-weight: 700;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-        
-        .feature-list {
-            list-style: none;
-            width: 100%;
-            max-width: 500px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
-        .feature-item {
-            margin-bottom: 20px;
+        /* 导航栏样式 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 60px;
         }
         
-        .magic-link {
-            display: block;
-            padding: 18px 30px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 36px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
             color: white;
             text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 18px;
             transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
+            padding: 8px 16px;
+            border-radius: 20px;
         }
         
-        .magic-link:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            border-color: rgba(255, 255, 255, 0.5);
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
         
-        .magic-link:active {
-            transform: translateY(-2px);
+        /* 主要内容区样式 */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 40px;
         }
         
-        .magic-link::after {
-            content: "→";
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.5rem;
+        .intro-box {
+            background: white;
+            color: #333;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin-bottom: 10px;
             transition: transform 0.3s ease;
         }
         
-        .magic-link:hover::after {
-            transform: translateY(-50%) translateX(5px);
+        .intro-box:hover {
+            transform: translateY(-5px);
         }
         
-        .footer {
-            margin-top: 50px;
-            font-size: 0.9rem;
-            opacity: 0.7;
+        h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #1e5799, #7db9e8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
-        /* 波浪装饰效果 */
-        .wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 80px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="rgba(255,255,255,0.1)"></path></svg>');
-            background-size: 1200px 80px;
-            animation: wave 12s linear infinite;
+        .intro-text {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: left;
         }
         
-        .wave:nth-child(2) {
-            opacity: 0.5;
-            animation: wave 10s linear infinite reverse;
+        .features {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            flex-wrap: wrap;
         }
         
-        @keyframes wave {
-            0% {
-                background-position-x: 0;
-            }
-            100% {
-                background-position-x: 1200px;
-            }
+        .feature {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #1e5799;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            opacity: 0.8;
         }
         
         /* 响应式设计 */
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            nav li {
+                margin: 0 10px;
+            }
+            
             h1 {
-                font-size: 2.2rem;
+                font-size: 36px;
             }
             
-            .container {
-                padding: 25px;
+            .intro-box {
+                padding: 20px;
             }
             
-            .magic-link {
-                padding: 15px 20px;
-                font-size: 1.1rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .subtitle {
-                font-size: 1rem;
+            .features {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
-    <div class="wave"></div>
     <div class="container">
-        <h1>开源宣传</h1>
-        <p class="subtitle">致力于为每个人提供简单而优雅的在线宣传页，让您的想法以最美的方式呈现。</p>
-        <ul class="feature-list">
-            <li class="feature-item">
-                <a href="/magicore.html" class="magic-link">魔术盒</a>
-            </li>
-        </ul>
+        <header>
+            <div class="logo">
+                魔术盒
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <div class="main-content">
+            <div class="intro-box">
+                <h2>魔术盒加速器</h2>
+                <div class="intro-text">
+                    <p>&emsp;&emsp;魔术盒加速器是一款专业的网络加速工具，致力于为用户提供稳定、高速、安全的网络连接体验。无论是游戏加速、视频流畅播放，还是安全访问全球资源，魔术盒都能为您提供卓越的服务。</p>
+                    
+                    <p>&emsp;&emsp;我们的技术团队采用最新的网络优化技术，在全球部署了数十个高速节点，确保您无论身处何地，都能享受到低延迟、高带宽的网络体验。</p>
+                    
+                    <p>&emsp;&emsp;魔术盒加速器支持多平台使用，让您在不同设备上都能畅享高速网络。</p>
+                </div>
+                
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">🚀</div>
+                        <div class="feature-title">极速连接</div>
+                        <p>全球节点覆盖，智能路由选择，为您提供最快的网络连接速度</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🔒</div>
+                        <div class="feature-title">安全加密</div>
+                        <p>采用高级加密技术，保护您的网络数据安全和隐私</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🌐</div>
+                        <div class="feature-title">全球覆盖</div>
+                        <p>全球数十个高速节点，让您轻松访问全球资源</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>© 2025 魔术盒加速器 版权所有</p>
+        </footer>
     </div>
 </body>
 </html>
