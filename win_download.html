@@ -546,11 +546,15 @@
         // 下载按钮点击反馈
         document.getElementById('downloadBtn').addEventListener('click', function(e) {
             e.preventDefault();
-            // 添加点击缩放反馈
+            const href = this.getAttribute('href');
+            // 点击缩放反馈
             this.style.transform = 'scale(0.95)';
+            this.style.transition = 'transform 0.15s ease';
             setTimeout(() => {
                 this.style.transform = '';
-            }, 200);
+                // 动画完成后跳转下载链接
+                window.location.href = href;
+            }, 250);
         });
 
         // 滚动动画效果
